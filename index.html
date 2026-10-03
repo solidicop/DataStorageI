@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#071b33">
+  <meta name="description" content="A complete 90-period Microsoft SQL Server teaching roadmap and browser SQL practice lab.">
+  <title>Stay Smart SQL</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">SS</div>
+        <div><strong>Stay Smart SQL</strong><span>Teacher-led SQL Server course</span></div>
+      </div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-view="home"><span>⌂</span>Today</button>
+        <button class="nav-item" data-view="curriculum"><span>▤</span>Curriculum</button>
+        <button class="nav-item" data-view="lab"><span>⌘</span>SQL Lab</button>
+        <button class="nav-item" data-view="assessments"><span>✓</span>Assessments</button>
+        <button class="nav-item" data-view="database"><span>◫</span>Year database</button>
+        <button class="nav-item" data-view="resources"><span>?</span>Teacher help</button>
+      </nav>
+      <div class="teacher-card" id="teacherCard">
+        <span class="eyebrow">TEACHER MODE</span>
+        <strong id="teacherState">Guidance is locked</strong>
+        <p id="teacherHint">Unlock lesson scripts, answers and marking guides.</p>
+        <button class="button secondary full" id="teacherToggle">Unlock teacher mode</button>
+      </div>
+      <p class="motto">Stay Smart <span aria-label="happy face">☺</span></p>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <button class="icon-button menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">☰</button>
+        <div class="topbar-title"><span id="viewKicker">COURSE COCKPIT</span><strong id="viewTitle">Today</strong></div>
+        <div class="topbar-actions">
+          <button class="icon-button" id="searchButton" aria-label="Search the course">⌕</button>
+          <button class="avatar" id="avatarButton" aria-label="Teacher mode">T</button>
+        </div>
+      </header>
+
+      <main id="main" tabindex="-1">
+        <section class="view active" data-view-panel="home">
+          <div class="hero-grid">
+            <article class="hero-card">
+              <div class="hero-copy">
+                <span class="eyebrow light">STORING DATA I · 90 PERIODS</span>
+                <h1>Teach SQL with a clear next step.</h1>
+                <p>A complete year plan for first-time teachers and curious students—grounded in SQL Server, practiced safely in the browser.</p>
+                <div class="hero-actions">
+                  <button class="button accent" data-go="curriculum">Open the roadmap</button>
+                  <button class="button ghost" data-go="lab">Practice a query</button>
+                </div>
+              </div>
+              <div class="hero-visual" aria-hidden="true">
+                <img src="assets/feed-me-knowledge.png" alt="">
+              </div>
+            </article>
+            <article class="progress-card">
+              <div class="progress-ring" id="progressRing"><span id="progressNumber">0%</span></div>
+              <div><span class="eyebrow">YOUR DEVICE</span><h2>Course progress</h2><p id="progressCopy">No periods completed yet.</p><button class="text-button" id="resetProgress">Reset progress</button></div>
+            </article>
+          </div>
+
+          <div class="section-heading"><div><span class="eyebrow">START HERE</span><h2>Your teaching sequence</h2></div><button class="text-button" data-go="curriculum">See all 90 periods</button></div>
+          <div class="chapter-strip" id="chapterStrip"></div>
+
+          <div class="dashboard-grid">
+            <article class="panel next-panel" id="nextLesson"></article>
+            <article class="panel quick-panel">
+              <span class="eyebrow">QUICK START</span><h2>Three moves for every lesson</h2>
+              <ol class="quick-steps"><li><b>Explain</b><span>Connect the idea to a familiar real-life system.</span></li><li><b>Model</b><span>Think aloud while you write and test one query.</span></li><li><b>Release</b><span>Students predict, modify, then create.</span></li></ol>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" data-view-panel="curriculum">
+          <div class="page-intro"><div><span class="eyebrow">THE BACKBONE</span><h1>90-period curriculum</h1><p>The official nine chapters, strengthened with the missing beginner knowledge in the moment it becomes useful.</p></div><div class="stat-row"><span><b>9</b> chapters</span><span><b>90</b> periods</span><span><b>30</b> practical</span></div></div>
+          <div class="curriculum-toolbar">
+            <label class="search-field"><span>⌕</span><input id="curriculumSearch" type="search" placeholder="Search lessons, skills or SQL…"></label>
+            <div class="filter-row" role="group" aria-label="Filter curriculum"><button class="chip active" data-filter="all">All</button><button class="chip" data-filter="theory">Theory</button><button class="chip" data-filter="practical">Practical</button><button class="chip" data-filter="checkpoint">Checkpoints</button></div>
+          </div>
+          <div class="curriculum-layout">
+            <div class="chapter-list" id="chapterList"></div>
+            <aside class="lesson-detail" id="lessonDetail"><div class="empty-detail"><span>01</span><h2>Select a period</h2><p>Its lesson plan, examples and teacher guidance will appear here.</p></div></aside>
+          </div>
+        </section>
+
+        <section class="view" data-view-panel="lab">
+          <div class="page-intro compact"><div><span class="eyebrow">SAFE PRACTICE SPACE</span><h1>Browser SQL Lab</h1><p>Write, run and inspect SQL on any modern phone or computer. The lab starts with the same StaySmart Academy database used throughout the course.</p></div><button class="button secondary" id="resetDb">Reset academy database</button></div>
+          <div class="lab-notice"><b>Learning dialect:</b> this browser engine handles beginner queries plus CREATE TABLE and common ALTER operations (ADD, DROP, RENAME and MODIFY columns). Define constraints while creating tables here; use SSMS for named-constraint changes and final T-SQL checks.</div>
+          <div class="lab-grid">
+            <aside class="schema-panel"><div class="panel-heading"><span>DATABASE</span><strong id="dbName">StaySmartAcademy</strong></div><div id="schemaTree"></div><button class="text-button" id="refreshSchema">Refresh schema</button></aside>
+            <div class="query-workspace">
+              <div class="query-tabs"><button class="query-tab active">Query 1 <span>×</span></button><button class="add-tab" aria-label="New query">＋</button><div class="query-actions"><button class="button run" id="runQuery">▶ Run</button></div></div>
+              <div class="editor-wrap"><div class="line-numbers" id="lineNumbers">1</div><textarea id="sqlEditor" spellcheck="false" aria-label="SQL query editor"></textarea></div>
+              <div class="results-area"><div class="results-head"><strong>Results</strong><span id="resultStatus">Ready</span></div><div id="queryResults" class="query-results"><div class="result-empty"><span>▶</span><p>Run a query to see its result.</p></div></div></div>
+            </div>
+            <aside class="challenge-panel"><div class="panel-heading"><span>GUIDED PRACTICE</span><strong>Query missions</strong></div><div id="missionList"></div></aside>
+          </div>
+        </section>
+
+        <section class="view" data-view-panel="assessments">
+          <div class="page-intro"><div><span class="eyebrow">CHECK UNDERSTANDING</span><h1>Assessment bank</h1><p>Low-stakes checks, practical tasks and chapter tests aligned to the teaching sequence.</p></div></div>
+          <div class="assessment-grid" id="assessmentGrid"></div>
+        </section>
+
+        <section class="view" data-view-panel="database">
+          <div class="page-intro"><div><span class="eyebrow">ONE DATABASE · ALL YEAR</span><h1>StaySmart Academy</h1><p>A school system students can understand on day one and query with increasing sophistication through chapter nine.</p></div><button class="button primary" data-go="lab">Open in SQL Lab</button></div>
+          <div class="database-map" id="databaseMap"></div>
+          <div class="content-columns"><article class="panel"><span class="eyebrow">WHY THIS MODEL WORKS</span><h2>Familiar, connected, expandable</h2><p>Students already understand learners, teachers, courses and grades. That leaves more thinking space for keys, relationships and queries.</p><ul class="check-list"><li>Every table has one clear purpose.</li><li>Relationships naturally introduce joins.</li><li>Enrollments model a many-to-many relationship.</li><li>Assignments and submissions support aggregation and subqueries.</li></ul></article><article class="panel"><span class="eyebrow">YEAR-LONG GROWTH</span><h2>From rows to decisions</h2><div class="growth-list" id="growthList"></div></article></div>
+        </section>
+
+        <section class="view" data-view-panel="resources">
+          <div class="page-intro"><div><span class="eyebrow">CONFIDENCE FOR THE TEACHER</span><h1>Teacher help desk</h1><p>Plain-language explanations for the questions that tend to appear just before—and during—a SQL lesson.</p></div></div>
+          <div class="resource-grid" id="resourceGrid"></div>
+          <article class="sources-card"><div><span class="eyebrow light">RELIABLE REFERENCE</span><h2>Built around Microsoft’s SQL Server documentation</h2><p>Use the course explanation first, then follow the official reference when you need exact product behavior or current installation steps.</p></div><a class="button ghost" href="SOURCES.md" target="_blank">Open source guide</a></article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <dialog id="teacherDialog" class="modal"><form method="dialog" id="teacherForm"><button class="modal-close" value="cancel" aria-label="Close">×</button><div class="modal-logo"><img src="assets/feed-me-knowledge.png" alt="Feed Me Knowledge logo"></div><span class="eyebrow">TEACHER MODE</span><h2>Open the teaching roadmap</h2><p>Teacher mode reveals scripts, likely misconceptions, answers and marking guides on this device.</p><label>Password<input id="teacherPassword" type="password" autocomplete="current-password" placeholder="Enter teacher password"></label><p class="form-error" id="teacherError" role="alert"></p><button class="button primary full" value="default">Unlock</button><small>This is a convenience lock for classroom use; static websites cannot securely hide content.</small></form></dialog>
+
+  <dialog id="searchDialog" class="modal search-modal"><form method="dialog"><button class="modal-close" value="cancel" aria-label="Close">×</button><span class="eyebrow">COURSE SEARCH</span><h2>Find exactly what you need</h2><label class="search-field large"><span>⌕</span><input id="globalSearch" type="search" placeholder="Try “NULL”, “joins” or “period 24”…" autofocus></label><div id="searchResults" class="search-results"></div></form></dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="vendor/alasql.min.js"></script>
+  <script src="curriculum.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
